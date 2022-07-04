@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { InvoiceModule } from './invoice/invoice.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [InvoiceModule, ConfigModule.forRoot({
@@ -16,7 +17,8 @@ import { InvoiceModule } from './invoice/invoice.module';
         uri: configService.get('MONGO_URI'),
       }),
       inject: [ConfigService],
-    }),],
+    }),
+    UserModule,],
   controllers: [],
   providers: [],
 })
